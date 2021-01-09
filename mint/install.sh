@@ -1,8 +1,5 @@
 #!/bin/sh
 
-## GIT PATH
-mkdir -p ~/Documents/github
-
 ## FIREWALL
 ufw enable
 ufw status verbose
@@ -13,6 +10,12 @@ rm /etc/apt/preferences.d/nosnap.pref
 apt update && \
 apt upgrade && \
 apt install snapd vim tmux build-essential curl file zsh git redshift fonts-crosextra-carlito fonts-crosextra-caladea neofetch -y
+
+## GIT PATH, CONFIGS
+mkdir -p ~/Documents/github
+git config --global user.name "Charles Damasceno"
+git config --global user.email swirfneblin@gmail.com
+git config --global core.editor vim
 
 ## HOMEBREW
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
