@@ -7,7 +7,6 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs ssh)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status aws time kubecontext ram)
 
 plugins=(
-	dnf
 	git
 	zsh-syntax-highlighting
 	zsh-autosuggestions
