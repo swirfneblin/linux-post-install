@@ -34,7 +34,7 @@ source <(eksctl completion bash)
 source <(helm completion bash)
 source <(gh completion -s bash)
 source <(stern --completion=bash)
-source $HOME/Documents/GitHub/bash-wakatime/bash-wakatime.sh
+# source $HOME/Documents/github/bash-wakatime/bash-wakatime.sh
 complete -C '/usr/local/bin/aws_completer' aws
 . /usr/share/bash-completion/completions/git
 

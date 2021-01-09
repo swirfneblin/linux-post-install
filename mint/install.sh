@@ -9,7 +9,7 @@ ufw status verbose
 rm /etc/apt/preferences.d/nosnap.pref
 apt update && \
 apt upgrade && \
-apt install snapd vim tmux build-essential curl file zsh git redshift fonts-crosextra-carlito fonts-crosextra-caladea neofetch htop -y
+apt install snapd vim tmux build-essential curl file zsh git redshift fonts-crosextra-carlito fonts-crosextra-caladea neofetch htop jq -y
 
 ## HOMEBREW
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -27,13 +27,19 @@ git submodule update --init
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-
 ## ZSH, OH-MY-ZSH, BASH ##
-sudo chsh -s /usr/bin/zsh $USER
+chsh -s $(which zsh) $USER
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+## zsh Themes
+git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 curl -k https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/.zshrc > ~/.zshrc
 curl -k https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/.bashrc > ~/.bashrc
 curl -k https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/.vimrc > ~/.vimrc
+
+## FZF
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
 
 ## VELERO ##
 wget https://github.com/vmware-tanzu/velero/releases/download/v1.5.2/velero-v1.5.2-linux-amd64.tar.gz

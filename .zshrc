@@ -15,12 +15,11 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 HISTCONTROL=ignoreboth
+HISTSIZE=5000
+HISTFILESIZE=10000
 
 setopt APPEND_HISTORY
 setopt share_history
-
-HISTSIZE=5000
-HISTFILESIZE=10000
 
 ## Completions
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
@@ -29,7 +28,7 @@ export KUBECONFIG=~/.kube/config
 export GOPATH=/usr/local/go/bin
 export PROMPT_COMMAND="history -a; history -n"
 export KUBE_EDITOR=vim
-export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-11.0.9.11-4.fc33.x86_64"
+# export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-11.0.9.11-4.fc33.x86_64"
 export PATH="$JAVA_HOME/bin:$GOPATH:$PATH"
 
 source <(stern --completion=zsh)
@@ -44,4 +43,6 @@ alias vi=vim
 
 bindkey "\033[1~" beginning-of-line
 bindkey "\033[4~" end-of-line
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
