@@ -6,7 +6,7 @@
 
 ## Global Protect
 
-Get [PanGPLinux-5.1.4-c9.tgz](https://drive.google.com/drive/folders/1swpqaTaNFPSNVa5ojAmkzGnXoxCj_QwE) and run:
+Get [PanGPLinux-5.1.4-c9.tgz](http://csuf.screenstepslive.com/s/12867/m/75252/l/841785-download-install-the-campus-vpn-agent) and run:
 
 ```
 cd ~/Downloads
