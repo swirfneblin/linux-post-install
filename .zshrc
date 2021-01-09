@@ -10,7 +10,7 @@ plugins=(
 	dnf
 	git
 	zsh-syntax-highlighting
-	zsh-autosuggestions 
+	zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -27,16 +27,19 @@ HISTFILESIZE=10000
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 export KUBECONFIG=~/.kube/config
-export GOPATH=/usr/local/go/bin                                            
+export GOPATH=/usr/local/go/bin
 export PROMPT_COMMAND="history -a; history -n"
 export KUBE_EDITOR=vim
 export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-11.0.9.11-4.fc33.x86_64"
 export PATH="$JAVA_HOME/bin:$GOPATH:$PATH"
 
+source <(stern --completion=zsh)
+source <(gh completion -s zsh)
+
 alias k=kubectl
 alias kx=kubectx
 alias ks=kubens
-alias pbcopy='xclip -selection clipboard'       
+alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 alias vi=vim
 
