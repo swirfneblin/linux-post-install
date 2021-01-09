@@ -7,9 +7,12 @@ ufw status verbose
 
 ## SNAP, GIT, TMUX, VIM, KUBECTX, ZSH ##
 rm /etc/apt/preferences.d/nosnap.pref
-apt update && \
-apt upgrade && \
-apt install snapd vim tmux build-essential curl file zsh git redshift fonts-crosextra-carlito fonts-crosextra-caladea neofetch htop jq -y
+apt update
+apt upgrade
+apt install snapd vim tmux build-essential curl file zsh git redshift fonts-crosextra-carlito fonts-crosextra-caladea neofetch htop jq ttf-mscorefonts-installer ttf-mscorefonts-installer -y
+
+## FONTS
+fc-cache -f -v
 
 ## HOMEBREW
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -29,10 +32,17 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 ## ZSH, OH-MY-ZSH, BASH ##
 chsh -s $(which zsh) $USER
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 ## zsh Themes
-git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/themes/powerlevel9k
+
+mkdir -p ~/.local/share/fonts
+cd ~/.local/share/fonts && curl -fLo "Droid Sans Mono for Powerline Nerd Font Complete.otf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf
+
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
 curl -k https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/.zshrc > ~/.zshrc
 curl -k https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/.bashrc > ~/.bashrc
 curl -k https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/.vimrc > ~/.vimrc
