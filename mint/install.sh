@@ -12,7 +12,7 @@ ufw status verbose
 rm -f /etc/apt/preferences.d/nosnap.pref
 apt update
 apt upgrade
-apt install snapd vim tmux build-essential curl file zsh git redshift fonts-crosextra-carlito fonts-crosextra-caladea neofetch htop jq ttf-mscorefonts-installer ttf-mscorefonts-installer xclip keepassx -y
+apt install snapd vim tmux build-essential curl file zsh git redshift fonts-crosextra-carlito fonts-crosextra-caladea neofetch htop jq ttf-mscorefonts-installer xclip keepassx nodejs npm -y
 
 ## FONTS
 fc-cache -f -v
@@ -91,7 +91,6 @@ snap install kontena-lens --classic
 snap install code --classic
 snap install dbeaver-ce
 snap install slack --classic
-snap install podman --edge --jailmode
 
 ## TEAMVIEWER
 wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb && apt install -y ./teamviewer_amd64.deb && rm teamviewer_amd64.deb
@@ -137,3 +136,15 @@ wget https://dlcdnets.asus.com/pub/ASUS/LCD%20Monitors/MB16AP/ASUS_MB_Series_dri
 unzip ASUS_MB_Series_driver_for_Ubuntu_5.3.1.zip && rm ASUS_MB_Series_driver_for_Ubuntu_5.3.1.zip
 chmod +x displaylink-driver-5.3.1.34.run
 ./displaylink-driver-5.3.1.34.run && rm displaylink-driver-5.3.1.34.run
+
+## VIRTUALBOX
+wget https://download.virtualbox.org/virtualbox/6.1.16/VirtualBox-6.1.16-140961-Linux_amd64.run
+chmod +x VirtualBox-6.1.16-140961-Linux_amd64.run
+/bin/bash VirtualBox-6.1.16-140961-Linux_amd64.run
+rm VirtualBox-6.1.16-140961-Linux_amd64.run
+
+## LEAGUE OF LEGENDS
+snap install wine-platform-5-staging
+snap refresh --candidate wine-platform-runtime
+snap refresh --candidate wine-platform-5-staging
+snap install leagueoflegends --edge --devmode
