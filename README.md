@@ -15,3 +15,9 @@ dpkg -i GlobalProtect_UI_deb-5.1.4.0-9.deb
 rm GlobalProtect_* manifest relinfo PanGPLinux*
 ```
 ---
+
+## How to use
+```
+chmod +x mint/install.sh
+sudo sh ./mint/install.sh
+```

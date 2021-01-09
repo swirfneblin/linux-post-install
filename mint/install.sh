@@ -1,12 +1,15 @@
 #!/bin/sh
 
+# exit when any command fails
+set -e
+
 ## FIREWALL ##
 ufw enable
 ufw status verbose
 ufw status verbose
 
 ## SNAP, GIT, TMUX, VIM, KUBECTX, ZSH
-rm /etc/apt/preferences.d/nosnap.pref
+rm -f /etc/apt/preferences.d/nosnap.pref
 apt update
 apt upgrade
 apt install snapd vim tmux build-essential curl file zsh git redshift fonts-crosextra-carlito fonts-crosextra-caladea neofetch htop jq ttf-mscorefonts-installer ttf-mscorefonts-installer xclip keepassx -y
@@ -15,7 +18,9 @@ apt install snapd vim tmux build-essential curl file zsh git redshift fonts-cros
 fc-cache -f -v
 
 ## HOMEBREW
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+wget https://raw.githubusercontent.com/Homebrew/install/master/install.sh
+chmod +x install.sh
+./install.sh && rm install.sh
 
 ## GIT PATH, CONFIGS
 mkdir -p ~/Documents/github
