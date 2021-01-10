@@ -45,7 +45,9 @@ fi
 ## ZSH, OH-MY-ZSH, BASH
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
   chsh -s $(which zsh) $USER
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  curl -fsSLo install.sh https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
+  chmod +x install.sh
+  ./install.sh && rm install.sh
 
   ## ZSH THEMES
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
@@ -55,7 +57,10 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
   curl -fLo "Hack Regular Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf
 fi
 
-p10k configure
+if [ ! -d ~/powerlevel10k ]; then
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+  # OPTIONAL: p10k configure
+fi
 
 curl -kfLo ~/.p10k.zsh https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/shellcfg/p10k.zsh
 curl -kfLo ~/.zshrc https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/zshrc
