@@ -48,9 +48,6 @@ curl -fLo "Hack Regular Nerd Font Complete.ttf" https://github.com/ryanoasis/ner
 
 p10k configure
 
-git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-
 curl -k https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/p10k.zsh > ~/.p10k.zsh
 curl -k https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/zshrc > ~/.zshrc
 curl -k https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/bashrc > ~/.bashrc
