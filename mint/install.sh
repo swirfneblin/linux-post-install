@@ -40,18 +40,21 @@ chsh -s $(which zsh) $USER
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 ## ZSH THEMES
-git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/themes/powerlevel9k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 mkdir -p ~/.local/share/fonts
 cd ~/.local/share/fonts
-curl -fLo "Droid Sans Mono for Powerline Nerd Font Complete.otf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf
+curl -fLo "Hack Regular Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf
+
+p10k configure
 
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
-curl -k https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/.zshrc > ~/.zshrc
-curl -k https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/.bashrc > ~/.bashrc
-curl -k https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/.vimrc > ~/.vimrc
+curl -k https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/p10k.zsh > ~/.p10k.zsh
+curl -k https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/zshrc > ~/.zshrc
+curl -k https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/bashrc > ~/.bashrc
+curl -k https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/vimrc > ~/.vimrc
 
 ## FZF
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
