@@ -35,11 +35,12 @@ if [ ! -d "~/Documents/github" ]; then
 fi
 
 ## VIM
-[[ ! -d ~/.vim ]] && \
+if [ ! -d ~/.vim ]; then
   git clone https://github.com/rafaelrosafu/vimfiles ~/.vim && \
   cd ~/.vim && \
   git submodule update --init && \
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
 
 ## ZSH, OH-MY-ZSH, BASH
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
@@ -56,10 +57,10 @@ fi
 
 p10k configure
 
-curl -kfLo ~/.p10k.zsh https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/p10k.zsh
-curl -k https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/zshrc > ~/.zshrc
-curl -k https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/bashrc > ~/.bashrc
-curl -k https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/vimrc > ~/.vimrc
+curl -kfLo ~/.p10k.zsh https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/shellcfg/p10k.zsh
+curl -kfLo ~/.zshrc https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/zshrc
+curl -kfLo ~/.bashrc https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/bashrc
+curl -kfLo ~/.vimrc https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/vimrc
 
 ## FZF
 if [[ ! -d ~/.fzf ]]; then
