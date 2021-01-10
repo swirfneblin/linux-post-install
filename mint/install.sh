@@ -63,9 +63,9 @@ if [ ! -d ~/powerlevel10k ]; then
 fi
 
 curl -kfLo ~/.p10k.zsh https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/shellcfg/p10k.zsh
-curl -kfLo ~/.zshrc https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/zshrc
-curl -kfLo ~/.bashrc https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/bashrc
-curl -kfLo ~/.vimrc https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/vimrc
+curl -kfLo ~/.zshrc https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/shellcfg/zshrc
+curl -kfLo ~/.bashrc https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/shellcfg/bashrc
+curl -kfLo ~/.vimrc https://raw.githubusercontent.com/swirfneblin/linux-post-install/master/shellcfg/vimrc
 
 ## FZF
 if [[ ! -d ~/.fzf ]]; then
