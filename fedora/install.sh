@@ -3,20 +3,17 @@
 # exit when any command fails
 set -e
 
+## SNAP, GIT, TMUX, VIM, KUBECTX, ZSH
+dnf update
+dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+dnf upgrade
+dnf install snapd vim tmux curl file zsh git redshift neofetch htop jq xclip keepassx nodejs npm gnome-tweak-tool chsh ufw podman -y
+
 ## FIREWALL ##
 if [ $(ufw status | grep active -wc) -eq 0 ]; then
   ufw enable
   ufw status verbose
 fi
-
-## SNAP, GIT, TMUX, VIM, KUBECTX, ZSH
-rm -f /etc/apt/preferences.d/nosnap.pref
-apt update
-apt upgrade
-apt install snapd vim tmux build-essential curl file zsh git redshift fonts-crosextra-carlito fonts-crosextra-caladea neofetch htop jq ttf-mscorefonts-installer xclip keepassx nodejs npm -y
-
-## FONTS
-fc-cache -f -v
 
 ## HOMEBREW
 if [ ! -d "/home/linuxbrew" ]; then
@@ -111,18 +108,23 @@ brew install kubectx
 
 ## [SNAP]: DOTNET, LENS, CODE, HELM, KUBECTL, KUBECTX, DBEAVER
 snap install helm --classic
-snap install kubectl --classic
-snap install dotnet-sdk --classic --channel=5.0
-snap install dotnet-runtime-50 --classic
-snap install kontena-lens --classic
-snap install code --classic
-snap install dbeaver-ce
-snap install slack --classic
+sudo snap install kubectl --classic
+sudo snap install dotnet-sdk --classic --channel=5.0
+sudo snap install dotnet-runtime-50 --classic
+sudo snap install kontena-lens --classic
+sudo snap install dbeaver-ce
+sudo snap install slack --classic
+
+## VSCODE
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+sudo dnf check-update
+sudo dnf install code
 
 ## TEAMVIEWER
 if ! command -v teamviewer &> /dev/null
 then
-  wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb && apt install -y ./teamviewer_amd64.deb && rm teamviewer_amd64.deb
+  wget https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm && yum localinstall -y teamviewer.x86_64.rpm && rm teamviewer_amd64.deb
 fi
 
 ## GOLANG
@@ -134,52 +136,59 @@ fi
 ## ZOOM
 if ! command -v zoom &> /dev/null
 then
-  wget https://zoom.us/client/latest/zoom_amd64.deb
-  sudo dpkg -i zoom_amd64.deb && apt-get install -fy && rm zoom_amd64.deb
+  wget https://zoom.us/client/latest/zoom_x86_64.rpm
+  sudo yum localinstall -y zoom_x86_64.rpm && rm zoom_x86_64.rpm
 fi
 
 ## REMMINA
 if ! command -v remmina &> /dev/null
 then
-  apt-add-repository ppa:remmina-ppa-team/remmina-next -y
-  apt update
-  apt install remmina remmina-plugin-rdp remmina-plugin-secret -y
+  ## via software manager
 fi
 
 ## TEAMS
 if ! command -v teams &> /dev/null
 then
-  wget https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/teams_1.3.00.25560_amd64.deb
-  dpkg -i teams_1.3.00.25560_amd64.deb
-  rm teams_1.3.00.25560_amd64.deb
+    dnf install https://packages.microsoft.com/yumrepos/ms-teams/teams-1.3.00.16851-1.x86_64.rpm
 fi
 
 ## SKYPE
 if ! command -v skype &> /dev/null
 then
-  wget https://repo.skype.com/latest/skypeforlinux-64.deb && apt install ./skypeforlinux-64.deb && \
-  apt update && apt upgrade -y && rm skypeforlinux-64.deb
+  sudo curl -o /etc/yum.repos.d/skype-stable.repo https://repo.skype.com/rpm/stable/skype-stable.repo
+  sudo dnf install skypeforlinux
 fi
 
 ## DOCKER
 if ! command -v docker &> /dev/null
 then
-  apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-  add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(. /etc/os-release; echo "$UBUNTU_CODENAME") stable"
-  apt-get update
-  apt-get -y install docker-ce
-  usermod -aG docker $USER
+   sudo dnf remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-selinux \
+                  docker-engine-selinux \
+                  docker-engine
+  sudo dnf -y install dnf-plugins-core
+  sudo dnf config-manager \
+    --add-repo \
+    https://download.docker.com/linux/fedora/docker-ce.repo
+  sudo dnf install docker-ce docker-ce-cli containerd.io
+  sudo systemctl start docker
+  sudo usermod -aG docker $USER
 fi
-
-## PODMAN
 
 ## AWS-BITWARDEN
 if ! command -v aws &> /dev/null
 then
-  git clone https://github.com/swirfneblin/aws-bitwarden
-  cd aws-bitwarden
-  rm ../aws-bitwarden/ -rvf
+    ## wget https://vault.bitwarden.com/download/?app=desktop&platform=linux&variant=rpm
+    git clone https://github.com/swirfneblin/aws-bitwarden
+    cd aws-bitwarden
+    sudo make install
+    rm ../aws-bitwarden/ -rvf
 fi
 
 ## ASUS MB169B+ DISPLAYLINK
@@ -199,6 +208,13 @@ then
   /bin/bash VirtualBox-6.1.16-140961-Linux_amd64.run
   rm VirtualBox-6.1.16-140961-Linux_amd64.run
 fi
+
+## GLOBAPROTECT
+cd $HOME/Downloads
+wget https://fullerton-it-network-public.s3-us-west-2.amazonaws.com/PanGPLinux.tgz
+tar -xzvf PanGPLinux.tgzy
+sudo yum localinstall GlobalProtect_UI_rpm-5.2.4.0-14.rpm
+rm GlobalProtect_* PanGP* relinfo manifest -rfv
 
 ## LEAGUE OF LEGENDS
 if ! command -v leagueoflegends &> /dev/null
