@@ -7,7 +7,7 @@ set -e
 dnf update
 dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 dnf upgrade
-dnf install snapd vim tmux curl file zsh git redshift neofetch htop jq xclip keepassx nodejs npm gnome-tweak-tool chsh ufw podman dkms gnome-shell-extension-pomodoro -y
+dnf install snapd vim tmux curl file zsh git redshift neofetch htop jq xclip keepassx nodejs npm gnome-tweak-tool chsh ufw podman dkms gnome-shell-extension-pomodoro kernel-devel kernel-headers patch libdrm-devel -y
 
 ## FIREWALL ##
 if [ $(ufw status | grep active -wc) -eq 0 ]; then
@@ -167,7 +167,7 @@ then
                   docker-client-latest \
                   docker-common \
                   docker-latest \
-                  docker-latest-logrotate \
+                  docker-latest-logrotate \libdrm-devel
                   docker-logrotate \
                   docker-selinux \
                   docker-engine-selinux \
