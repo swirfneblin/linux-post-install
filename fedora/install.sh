@@ -7,7 +7,9 @@ set -e
 dnf update
 dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 dnf upgrade
-dnf install snapd vim tmux curl file zsh git redshift neofetch htop jq xclip keepassx nodejs npm gnome-tweak-tool chsh ufw podman dkms gnome-shell-extension-pomodoro kernel-devel kernel-headers patch libdrm-devel -y
+dnf install snapd vim tmux curl file zsh git redshift neofetch htop jq xclip keepassx nodejs \
+  npm gnome-tweak-tool chsh ufw podman dkms gnome-shell-extension-pomodoro kernel-devel \
+  kernel-headers patch libdrm-devel fedora-packager rpmdevtools gcc -y
 
 ## FIREWALL ##
 if [ $(ufw status | grep active -wc) -eq 0 ]; then
@@ -194,10 +196,17 @@ fi
 ## ASUS MB169B+ DISPLAYLINK
 if ! command -v displaylink-installer &> /dev/null
 then
-  ## wget https://dlcdnets.asus.com/pub/ASUS/LCD%20Monitors/MB16AP/ASUS_MB_Series_driver_for_Ubuntu_5.3.1.zip
+  cd $HOME/Downloads
+  ## wget https://drive.google.com/file/d/1RH3zy2kOmYa_qYgdPryjQ_idrRuDQrvg/view?usp=sharing
   tar -zxvf displaylink-driver-fedora33-5.3.1.34.tar.gz
-  chmod +x displaylink-driver-5.3.1.34/udev-installer.sh
-  sudo ./displaylink-driver-5.3.1.34/displaylink-installer.sh
+  cd displaylink-driver-5.3.1.34/
+  chmod +x displaylink-installer.sh
+  sudo ./displaylink-installer.sh.
+  cd .. && git clone https://github.com/DisplayLink/evdi && cd evdi
+  wget https://crazy.dev.frugalware.org/all-in-one-kernel-5.4-and-5.5-test.patch
+  git apply all-in-one-kernel-5.4-and-5.5-test.patch
+  make && sudo make install
+  cd .. && rm displaylink-driver-* evdi -rfv
 fi
 
 ## VIRTUALBOX
