@@ -9,7 +9,8 @@ dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$
 dnf upgrade
 dnf install snapd vim tmux curl file zsh git redshift neofetch htop jq xclip keepassx nodejs \
   npm gnome-tweak-tool chsh ufw podman dkms gnome-shell-extension-pomodoro kernel-devel \
-  kernel-headers patch libdrm-devel fedora-packager rpmdevtools gcc -y
+  kernel-headers patch libdrm-devel fedora-packager rpmdevtools gcc \
+  numix-gtk-theme numix-icon-theme-square -y
 
 ## FIREWALL ##
 if [ $(ufw status | grep active -wc) -eq 0 ]; then
@@ -229,7 +230,7 @@ rm GlobalProtect_* PanGP* relinfo manifest -rfv
 if ! command -v leagueoflegends &> /dev/null
 then
   snap install wine-platform-5-staging
-  snap refresh --candidate wine-platform-runtime
   snap refresh --candidate wine-platform-5-staging
   snap install leagueoflegends --edge --devmode
+  snap refresh --candidate wine-platform-runtime
 fi
