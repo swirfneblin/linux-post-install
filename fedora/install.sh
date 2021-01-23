@@ -109,7 +109,7 @@ brew install stern
 brew install gh
 brew install kubectx
 
-## [SNAP]: DOTNET, LENS, CODE, HELM, KUBECTL, KUBECTX, DBEAVER
+## [SNAP]: DOTNET, LENS, CODE, HELM, KUBECTL, KUBECTX, DBEAVER, TELEGRAM
 snap install helm --classic
 sudo snap install kubectl --classic
 sudo snap install dotnet-sdk --classic --channel=5.0
@@ -117,6 +117,7 @@ sudo snap install dotnet-runtime-50 --classic
 sudo snap install kontena-lens --classic
 sudo snap install dbeaver-ce
 sudo snap install slack --classic
+sudo dnf install telegram-desktop
 
 ## VSCODE
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
