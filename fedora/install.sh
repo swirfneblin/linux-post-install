@@ -7,7 +7,7 @@ set -e
 dnf update
 dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 dnf upgrade
-dnf install snapd vim tmux curl file zsh git redshift neofetch htop jq xclip keepassx nodejs \
+dnf install snapd vim tmux curl file zsh git redshift neofetch htop jq xclip keepassx nodejs nmap \
   npm gnome-tweak-tool chsh ufw podman dkms gnome-shell-extension-pomodoro kernel-devel \
   kernel-headers patch libdrm-devel fedora-packager rpmdevtools gcc \
   numix-gtk-theme numix-icon-theme-square -y
