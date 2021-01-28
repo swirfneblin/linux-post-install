@@ -104,10 +104,11 @@ then
   mv vault /usr/local/bin && rm vault_1.6.1_linux_amd64.zip
 fi
 
-## [BREW]: STERN, GH CLI, KUBECTX
+## [BREW]: STERN, GH CLI, KUBECTX, KUSTOMIZE
 brew install stern
 brew install gh
 brew install kubectx
+brew install kustomize
 
 ## [SNAP]: DOTNET, LENS, CODE, HELM, KUBECTL, KUBECTX, DBEAVER, TELEGRAM
 snap install helm --classic
