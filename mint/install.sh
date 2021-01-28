@@ -13,7 +13,7 @@ fi
 rm -f /etc/apt/preferences.d/nosnap.pref
 apt update
 apt upgrade
-apt install snapd vim tmux build-essential curl file zsh git redshift fonts-crosextra-carlito fonts-crosextra-caladea neofetch htop jq ttf-mscorefonts-installer xclip keepassx nodejs npm -y
+apt install snapd vim tmux build-essential curl file zsh git redshift fonts-crosextra-carlito fonts-crosextra-caladea neofetch htop jq ttf-mscorefonts-installer xclip keepassx nodejs npm nmap -y
 
 ## FONTS
 fc-cache -f -v
@@ -104,10 +104,11 @@ then
   mv vault /usr/local/bin && rm vault_1.6.1_linux_amd64.zip
 fi
 
-## [BREW]: STERN, GH CLI, KUBECTX
+## [BREW]: STERN, GH CLI, KUBECTX, KUSTOMIZE
 brew install stern
 brew install gh
 brew install kubectx
+brew install kustomize
 
 ## [SNAP]: DOTNET, LENS, CODE, HELM, KUBECTL, KUBECTX, DBEAVER
 snap install helm --classic
