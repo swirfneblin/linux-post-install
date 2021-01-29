@@ -3,6 +3,7 @@
 ## Mint configs
 
 - https://www.technipages.com/linux-mint-how-to-configure-alt-tab-works
+- https://linuxize.com/post/how-to-add-user-to-sudoers-in-ubuntu/
 
 ## Global Protect
 
