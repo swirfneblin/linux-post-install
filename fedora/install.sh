@@ -110,7 +110,7 @@ brew install gh
 brew install kubectx
 brew install kustomize
 
-## [SNAP]: DOTNET, LENS, CODE, HELM, KUBECTL, KUBECTX, DBEAVER, TELEGRAM
+## [SNAP]: DOTNET, LENS, CODE, HELM, KUBECTL, KUBECTX, DBEAVER, TELEGRAM, POSTMAN
 snap install helm --classic
 sudo snap install kubectl --classic
 sudo snap install dotnet-sdk --classic --channel=5.0
@@ -119,6 +119,7 @@ sudo snap install kontena-lens --classic
 sudo snap install dbeaver-ce
 sudo snap install slack --classic
 sudo dnf install telegram-desktop
+sudo snap install postman
 
 ## VSCODE
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
