@@ -3,6 +3,10 @@
 # exit when any command fails
 set -e
 
+## DISABLE IPV6
+sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
+
 ## SNAP, GIT, TMUX, VIM, KUBECTX, ZSH
 dnf update
 dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
