@@ -1,9 +1,10 @@
 # LINUX-POST-INSTALL - DevOps Tools
 
-## Mint configs
+## Tips
 
 - https://www.technipages.com/linux-mint-how-to-configure-alt-tab-works
 - https://linuxize.com/post/how-to-add-user-to-sudoers-in-ubuntu/
+- Remove firefox beeps: about:config page > media.hardwaremediakeys.enabled=false
 
 ## Global Protect
 
