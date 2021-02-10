@@ -229,7 +229,7 @@ fi
 ## GLOBAPROTECT
 cd $HOME/Downloads
 wget https://fullerton-it-network-public.s3-us-west-2.amazonaws.com/PanGPLinux.tgz
-tar -xzvf PanGPLinux.tgzy
+tar -xzvf PanGPLinux.tgz
 sudo yum localinstall GlobalProtect_UI_rpm-5.2.4.0-14.rpm
 rm GlobalProtect_* PanGP* relinfo manifest -rfv
 
