@@ -12,7 +12,7 @@ dnf update
 dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 dnf upgrade
 dnf install snapd vim tmux curl file zsh git redshift neofetch htop jq xclip keepassx nodejs nmap \
-  npm gnome-tweak-tool chsh ufw podman dkms gnome-shell-extension-pomodoro kernel-devel \
+  npm gnome-tweak-tool util-linux-user ufw podman dkms gnome-shell-extension-pomodoro kernel-devel \
   kernel-headers patch libdrm-devel fedora-packager rpmdevtools gcc \
   numix-gtk-theme numix-icon-theme-square -y
 
@@ -123,14 +123,14 @@ sudo snap install dotnet-runtime-50 --classic
 sudo snap install kontena-lens --classic
 sudo snap install dbeaver-ce
 sudo snap install slack --classic
-sudo dnf install telegram-desktop
+sudo dnf install telegram-desktop -y 
 sudo snap install postman
 
 ## VSCODE
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 sudo dnf check-update
-sudo dnf install code
+sudo dnf install code -y
 
 ## TEAMVIEWER
 if ! command -v teamviewer &> /dev/null
@@ -160,14 +160,14 @@ fi
 ## TEAMS
 if ! command -v teams &> /dev/null
 then
-    dnf install https://packages.microsoft.com/yumrepos/ms-teams/teams-1.3.00.16851-1.x86_64.rpm
+    dnf install https://packages.microsoft.com/yumrepos/ms-teams/teams-1.3.00.16851-1.x86_64.rpm -y
 fi
 
 ## SKYPE
 if ! command -v skype &> /dev/null
 then
   sudo curl -o /etc/yum.repos.d/skype-stable.repo https://repo.skype.com/rpm/stable/skype-stable.repo
-  sudo dnf install skypeforlinux
+  sudo dnf install skypeforlinux -y
 fi
 
 ## DOCKER
@@ -187,7 +187,7 @@ then
   sudo dnf config-manager \
     --add-repo \
     https://download.docker.com/linux/fedora/docker-ce.repo
-  sudo dnf install docker-ce docker-ce-cli containerd.io
+  sudo dnf install docker-ce docker-ce-cli containerd.io -y
   sudo systemctl start docker
   sudo usermod -aG docker $USER
 fi
