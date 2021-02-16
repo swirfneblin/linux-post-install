@@ -115,6 +115,7 @@ brew install kubectx
 brew install kustomize
 
 ## [SNAP]: DOTNET, LENS, CODE, HELM, KUBECTL, KUBECTX, DBEAVER, TELEGRAM, POSTMAN
+sudo ln -s /var/lib/snapd/snap /snap
 snap install helm --classic
 sudo snap install kubectl --classic
 sudo snap install dotnet-sdk --classic --channel=5.0
