@@ -154,7 +154,7 @@ fi
 ## REMMINA
 if ! command -v remmina &> /dev/null
 then
-  ## via software manager
+  sudo snap install remmina
 fi
 
 ## TEAMS
