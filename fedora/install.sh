@@ -178,7 +178,7 @@ then
                   docker-client-latest \
                   docker-common \
                   docker-latest \
-                  docker-latest-logrotate \libdrm-devel
+                  docker-latest-logrotate \
                   docker-logrotate \
                   docker-selinux \
                   docker-engine-selinux \
