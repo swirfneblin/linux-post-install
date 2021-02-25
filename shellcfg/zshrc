@@ -23,6 +23,7 @@ export PATH="$JAVA_HOME/bin:$GOPATH:$PATH"
 
 source <(stern --completion=zsh)
 source <(gh completion -s zsh)
+source <(kubectl completion zsh)
 
 alias k=kubectl
 alias kx=kubectx
